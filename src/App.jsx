@@ -4,19 +4,19 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 const categoryOptions = {
-  ডিজিটাল: ['addd','ডোমেইন ও হোস্টিং', 'প্রমোশন (অনলাইন)', 'স্টিমইয়ার্ড ও জুম সাবস্ক্রিপশন'],
+  ডিজিটাল: ['ডোমেইন ও হোস্টিং', 'প্রমোশন (অনলাইন)', 'স্টিমইয়ার্ড ও জুম সাবস্ক্রিপশন'],
   বাচাই: ['অনলাইন বাচাই অলিম্পিয়াড'],
   আঞ্চলিক: ['উৎসব আয়োজনের স্থানীয় খরচ (প্রতিনিধি)', 'স্বেচ্ছাসেবক ও অতিথি বিল', 'আঞ্চলিক লজিস্টিকস ','ঢাকা আঞ্চলিক উৎসব','প্রশ্ন ক্যাম্প'],
   জাতীয়: ['জাতীয় উৎসব'],
   কেন্দ্রীয়: ['কমিটি মিটিং', 'স্বেচ্ছাসেবক মিটিং', 'অন্যান্য'],
-  জাক্যাম্পতীয়: ['ক্যাম্প'],
+  ক্যাম্প: ['ক্যাম্প'],
   আইএমও: ['টিকিট', 'ভিসা প্রসেসিং', 'আইএমও ফি','প্রেস কনফারেন্স','আইএমও ক্যাম্প','স্থানীয় খরচ'],
   সন্মানী: ['স্বেচ্ছাসেবক সম্মানী', 'বেতন ও ভাতা'],
 };
 
 function App() {
   const [formData, setFormData] = useState({
-    date: '',
+    date: new Date(),
     description: '',
     amount: ''
   });
@@ -104,7 +104,7 @@ console.log('Ctegory',serial,category,subCategory)
         <label className="block text-start font-medium text-gray-700 mb-1">Category</label>
         <select
         name="category"
-        value={'category'}
+        value={category}
         onChange={handleCategoryChange}
         className="w-full border border-gray-300 rounded px-3 py-2 bg-white focus:outline-none focus:ring focus:ring-blue-200"
       >
@@ -124,11 +124,10 @@ console.log('Ctegory',serial,category,subCategory)
         <label className="block text-start font-medium text-gray-700 mb-1">Sub Category</label>
         <select
         name="category"
-        value={'category'}
+        value={subCategory}
         onChange={handleSubCategoryChange}
         className="w-full border border-gray-300 rounded px-3 py-2 bg-white focus:outline-none focus:ring focus:ring-blue-200"
       >
-         <option value="">Select a sub category</option>
             {categoryOptions[category].map((sub) => (
               <option key={sub} value={sub}>{sub}</option>
             ))}
